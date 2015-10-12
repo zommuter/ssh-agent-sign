@@ -6,6 +6,7 @@
 from __future__ import print_function
 import paramiko
 import fileinput
+import hexdump
 
 
 if __name__ == "__main__":
@@ -13,5 +14,4 @@ if __name__ == "__main__":
     key = agent.get_keys()[0]  # TODO: Key selection
     for line in fileinput.input():
         signature = key.sign_ssh_data(line)
-        print("".join("{0:02x}".format(i) for i in signature))
-        # TODO hexdump in python2-compatible format
+        print(hexdump.dump(signature,sep=''))
