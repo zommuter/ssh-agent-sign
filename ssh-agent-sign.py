@@ -13,5 +13,6 @@ if __name__ == "__main__":
     agent = paramiko.Agent()
     key = agent.get_keys()[0]  # TODO: Key selection
     for line in fileinput.input():
-        signature = key.sign_ssh_data(line)
+        signature = key.sign_ssh_data(line)[15:]
+        # TODO figure out whether it's always 15 bytes to skip (and why)
         print(hexdump.dump(signature,sep=''))
