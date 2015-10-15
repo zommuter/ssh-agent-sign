@@ -5,4 +5,4 @@ Simple Python script to have an active `ssh-agent` sign a message.
 
 Just pipe:
 
-    echo "Hello" | python ssh-agent-sign.py > hello.sig
+    echo "Hello" | python -m ssh-agent-sign > hello.sig
